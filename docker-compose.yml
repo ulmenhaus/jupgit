@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  notebook:
+    build:
+      context: notebook
+    ports:
+      - 8888:8888
+    volumes:
+      - $PWD/../scilogs:/home/jovyan/work
+  gitapi:
+    build:
+      context: gitapi
+    ports:
+      - 8889:8889
+    volumes:
+      - $PWD/../scilogs:/workdir
+  proxy:
+    build:
+      context: proxy
+    ports:
+      - 80:80
